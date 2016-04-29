@@ -1,0 +1,23 @@
+{
+  "name": "vendor/package",
+  "require": {
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Vendor\\Package\\": "src/"
+    }
+  },
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "authors": [
+    {
+      "name": "",
+      "email": ""
+    }
+  ],
+  "license": "MIT",
+  "minimum-stability": "dev"
+}
