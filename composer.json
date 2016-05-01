@@ -1,12 +1,13 @@
 {
   "name": "vendor/package",
   "require": {
+    "laravel/laravel":      "~5.2"
   },
   "require-dev": {
   },
   "autoload": {
     "psr-4": {
-      "Vendor\\Package\\": "src/"
+      "Vendor\\Package\\":  "src/"
     }
   },
   "description": "",
