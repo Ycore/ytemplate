@@ -11,14 +11,6 @@
     }
   },
   "description": "",
-  "keywords": [],
-  "homepage": "",
-  "authors": [
-    {
-      "name": "",
-      "email": ""
-    }
-  ],
   "license": "MIT",
   "minimum-stability": "dev"
 }
