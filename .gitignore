@@ -1,0 +1,6 @@
+/resources/node_modules
+/resources/bower_components
+/storage
+/vendor
+.env
+.env.*
