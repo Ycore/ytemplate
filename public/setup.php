@@ -53,6 +53,14 @@ class Setup
 
     private function populateFiles()
     {
+        if ($this->files->makeDirectory('../app/Http', 0755, true))
+        {
+            $this->makeMessage("Create of ../app/Http succesfully completed ...");
+        }
+        if ($this->files->copy('../vendor/laravel/laravel/app/Http/routes.php','../app/Http/routes.php'))
+        {
+            $this->makeMessage("Copy of ../app/Http/routes.php succesfully completed ...");
+        }
         if ($this->files->copy('../vendor/laravel/laravel/public/index.php','../public/index.php'))
         {
             $this->makeMessage("Copy of ../public/index.php succesfully completed ...");
