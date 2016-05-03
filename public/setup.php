@@ -53,23 +53,40 @@ class Setup
 
     private function populateFiles()
     {
-        if ($this->files->makeDirectory('../app/Http', 0755, true))
-        {
-            $this->makeMessage("Create of ../app/Http succesfully completed ...");
-        }
-        if ($this->files->copy('../vendor/laravel/laravel/app/Http/routes.php','../app/Http/routes.php'))
-        {
-            $this->makeMessage("Copy of ../app/Http/routes.php succesfully completed ...");
-        }
-        if ($this->files->copy('../vendor/laravel/laravel/public/index.php','../public/index.php'))
-        {
-            $this->makeMessage("Copy of ../public/index.php succesfully completed ...");
-        }
-        if ($this->files->copy('../vendor/laravel/laravel/.env.example','../.env'))
-        {
-            $this->makeMessage("Copy of ../.env succesfully completed ...");
-        }
+        $this->copyFileInDirectory('../app/Http', 'app/Http/routes.php');
+        $this->copyFileInDirectory('../tests', 'tests/TestCase.php');
+
+        $this->copyFile('public/.htaccess');
+        $this->copyFile('public/index.php');
+        $this->copyFile('public/robots.txt');
+        $this->copyFile('public/web.config');
+        $this->copyFile('.env.example','.env');
+
         $this->makeMessage("<strong>*** Remember to update the ../.env file with the correct credentials ***</strong>");
+    }
+
+    private function copyFileInDirectory($directory, $source, $target = null)
+    {
+        if (!$this->files->isDirectory($directory))
+        {
+            if ($this->files->makeDirectory($directory, 0755, true))
+            {
+                $this->makeMessage("Create of ${directory} succesfully completed ...");
+            }
+        }
+        $this->copyFile($source, $target);
+    }
+
+    private function copyFile($source, $target = null)
+    {
+        if ($target === null) {
+            $target = $source;
+        }
+
+        if ($this->files->copy("../vendor/laravel/laravel/${source}","../${target}"))
+        {
+            $this->makeMessage("Copy of ../${target} succesfully completed ...");
+        }
     }
 
     private function makeMessage($message)
